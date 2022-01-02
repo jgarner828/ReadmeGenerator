@@ -1,13 +1,28 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+const generateMarkdown = require('./utils/generateMarkdown');
+
+
 // TODO: Create an array of questions for user input
-const questions = [];
+const questions = [ 
+
+  {
+  type: 'input',
+  name: 'projectName',
+  message: "What is the name of the project?",
+  },
+
+  {
+    type: 'input',
+    name: 'projectName',
+    message: "What is the name of the project?",
+    }
+];
+
 
 inquirer
-  .prompt([
-    /* Pass your questions in here */
-  ])
+  .prompt(questions)
   .then((answers) => {
     // Use user feedback for... whatever!!
   })
