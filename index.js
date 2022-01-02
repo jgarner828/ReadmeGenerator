@@ -8,15 +8,47 @@ const generateMarkdown = require('./utils/generateMarkdown');
 const questions = [ 
 
   {
-  type: 'input',
-  name: 'projectName',
-  message: "What is the name of the project?",
+    type: 'input',
+    name: 'projectTitle',
+    message: "What is the title of the project?",
+    validate: function(answer) {
+      if(answer.length < 1) {
+        return console.log('You must enter in a project title.')
+      }
+      return true;
+    }
   },
 
   {
     type: 'input',
-    name: 'projectName',
-    message: "What is the name of the project?",
+    name: 'githubURL',
+    message: "What is the URL of the Github repository?",
+    validate: function(answer) {
+      if(answer.length < 1) {
+        return console.log('You must enter in a repository URL.')
+      }
+      return true;
+    }
+  },
+
+  {
+    type: 'input',
+    name: 'projectDescription',
+    message: "What is the description of the project?",
+    validate: function(answer) {
+      if(answer.length < 1) {
+        return console.log('You must enter a project description.')
+      }
+      return true;
+    }
+  },
+
+  // https://choosealicense.com/licenses/   This is where the list comes from.
+  {
+    type: 'list',
+    name: 'license',
+    message: "Choose a license for your project:",
+    choices: ['GNU AGPLv3', 'GNU GPLv3', 'GNU LGPLv3', 'Mozilla Public License 2.0', 'Apache License 2.0', 'MIT License', 'Boost Software License 1.0', 'The Unlicense']
     }
 ];
 
@@ -25,6 +57,7 @@ inquirer
   .prompt(questions)
   .then((answers) => {
     // Use user feedback for... whatever!!
+    console.log(answers);
   })
   .catch((error) => {
     if (error.isTtyError) {
