@@ -2,6 +2,8 @@
 Node based command line readme.md generator
 
 
+  [![GNU AGPLv3](https://img.shields.io/badge/License-GNU AGPLv3-<COLOR>.svg)](https://shields.io/)
+
 
 
 Getting Started

@@ -4,12 +4,13 @@ const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown');
 
 
+
 // TODO: Create an array of questions for user input
 const questions = [ 
 
   {
     type: 'input',
-    name: 'projectTitle',
+    name: 'title',
     message: "What is the title of the project?",
     validate: function(answer) {
       if(answer.length < 1) {
@@ -33,7 +34,7 @@ const questions = [
 
   {
     type: 'input',
-    name: 'projectDescription',
+    name: 'projectDescr',
     message: "What is the description of the project?",
     validate: function(answer) {
       if(answer.length < 1) {
@@ -43,12 +44,25 @@ const questions = [
     }
   },
 
+  {
+    type: 'input',
+    name: 'credits',
+    message: "Credits:",
+    validate: function(answer) {
+      if(answer.length < 1) {
+        return console.log('credits')
+      }
+      return true;
+    }
+  },
+
+
   // https://choosealicense.com/licenses/   This is where the list comes from.
   {
     type: 'list',
     name: 'license',
     message: "Choose a license for your project:",
-    choices: ['GNU AGPLv3', 'GNU GPLv3', 'GNU LGPLv3', 'Mozilla Public License 2.0', 'Apache License 2.0', 'MIT License', 'Boost Software License 1.0', 'The Unlicense']
+    choices: ['GNU AGPLv3', 'GNU GPLv3', 'GNU LGPLv3', 'Mozilla Public License-2.0', 'Apache License-2.0', 'MIT License', 'Boost Software License 1.0', 'The Unlicense', 'none']
     }
 ];
 
@@ -58,6 +72,9 @@ inquirer
   .then((answers) => {
     // Use user feedback for... whatever!!
     console.log(answers);
+    let markdown = generateMarkdown(answers);
+    fs.writeFileSync("new-README.md", markdown);
+
   })
   .catch((error) => {
     if (error.isTtyError) {
@@ -69,8 +86,6 @@ inquirer
 
   
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
 function init() {}
