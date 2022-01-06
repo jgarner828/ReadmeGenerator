@@ -64,25 +64,23 @@ function renderLicenseLink(license) {
 function generateMarkdown(data) {
 
 
-  return `
+  return `# ${data.title}
   
-    # ${data.title}
+  ${renderLicenseBadge(data.license)}
+  
+  ## ${data.githubURL}
+  
+  # Project Description
+  
+  **${data.projectDescr}**
 
-    ${renderLicenseBadge(data.license)}
-    
-    ## ${data.githubURL}
-    
+  # Usage
 
-    # Project Description
-    
-    **${data.projectDescr}**
-
-
-    # License
-    
-
-
-    ### [${data.license} Link](${renderLicenseLink(data.license)})
+  **${data.usage}**
+  
+  # License
+  
+  ### [${data.license} Link](${renderLicenseLink(data.license)})
   `;
   
 }

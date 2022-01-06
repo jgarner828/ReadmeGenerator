@@ -46,6 +46,18 @@ const questions = [
 
   {
     type: 'input',
+    name: 'usage',
+    message: "How do you work this program?",
+    validate: function(answer) {
+      if(answer.length < 1) {
+        return console.log('You must describe how to use the program.')
+      }
+      return true;
+    }
+  },
+
+  {
+    type: 'input',
     name: 'credits',
     message: "Credits:",
     validate: function(answer) {
